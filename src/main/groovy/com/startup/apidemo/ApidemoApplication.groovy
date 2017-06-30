@@ -37,7 +37,7 @@ class ApidemoApplication {
 		return 'Hi without name'
 	}
 
-	@RequestMapping('/findValue')
+	@RequestMapping(value = '/findValue',produces = ['application/json'])
 	def whatIsTheValue(
 			@RequestParam('currency') def currency
 	) {
@@ -45,7 +45,7 @@ class ApidemoApplication {
 			return service.getCurrency(currency)
 		}catch (Exception e) {
 			System.out.print(e)
-			return 'Unavailable '
+			return 'Unavailable operation for the given app_id '
 		}
 	}
 
@@ -59,7 +59,7 @@ class ApidemoApplication {
             return service.getConversion(value, fromCurrency, toCurrency)
         }catch (Exception e) {
             System.out.print(e)
-            return 'Unavailable '
+            return 'Unavailable operation for the given app_id'
         }
     }
 
